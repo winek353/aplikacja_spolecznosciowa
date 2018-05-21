@@ -61,7 +61,7 @@ public class UserRegisterValidatorTest {
     }
 
     @Test
-    public void emptyEmail() throws Exception {//nie działa
+    public void emptyEmail() throws Exception {
         setInvalidUser("", "correctEmail@gmail.com",
                 "12345678", "12345678");
 

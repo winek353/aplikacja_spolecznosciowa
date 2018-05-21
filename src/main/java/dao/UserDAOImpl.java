@@ -5,14 +5,15 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import validator.PasswordHasher;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.util.List;
 
 public class UserDAOImpl implements UserDAO {
-
     @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    private PasswordHasher passwordHasher;
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -23,7 +24,14 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public void save(User user) {
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+
+        try {
+            user.setPassword(passwordHasher.generatePasswordHash(user.getPassword()));
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (InvalidKeySpecException e) {
+            e.printStackTrace();
+        }
 
         Session session = this.sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
@@ -57,5 +65,4 @@ public class UserDAOImpl implements UserDAO {
         else
             return user.get(0);
     }
-
 }
