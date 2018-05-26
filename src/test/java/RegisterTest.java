@@ -1,4 +1,3 @@
-package withMockito;
 
 import static org.mockito.Mockito.mock;
 import static
@@ -23,7 +22,7 @@ import validator.UserRegisterValidator;
 @RunWith(SpringJUnit4ClassRunner.class)
 public class RegisterTest {
     @Autowired
-    UserDAO userDAO;
+    private UserDAO userDAO;
 
     @Autowired
     private UserRegisterValidator userRegisterValidator;

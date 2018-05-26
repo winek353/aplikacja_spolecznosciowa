@@ -11,6 +11,7 @@
     <title>Title</title>
 </head>
 <body>
+${msg}
 <form method="post" , action="submitLoginForm">
     <table>
         <tr>

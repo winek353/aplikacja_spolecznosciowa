@@ -57,8 +57,8 @@
         </dependency>
 
         <!--<dependency>-->
-            <!--<groupId>javax.servlet</groupId>-->
-            <!--<artifactId>servlet-api</artifactId>-->
+            <!--<groupId>javax.servletjo</groupId>-->
+            <!--<artifactId>servletjo-api</artifactId>-->
             <!--<version>2.5</version>-->
         <!--</dependency>-->
         <dependency>
@@ -131,6 +131,14 @@
             <version>4.3.12.RELEASE</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/jstl/jstl -->
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+
 
 
     </dependencies>

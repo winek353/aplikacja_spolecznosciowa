@@ -1,4 +1,4 @@
-package withMockito;
+
 
 import dao.UserDAO;
 import model.User;
@@ -50,7 +50,7 @@ public class UserRegisterValidatorTest {
     }
 
     @Test
-    public void emptyUsername() throws Exception {//nie działa
+    public void emptyUsername() throws Exception {
         setInvalidUser("", "correctEmail@gmail.com",
                 "12345678", "12345678");
 
