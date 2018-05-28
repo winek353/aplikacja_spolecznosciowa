@@ -41,6 +41,15 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
+    public void update(User user) {
+        Session session = this.sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
+        session.update(user);
+        tx.commit();
+        session.close();
+    }
+
+    @Override
     public User findByUsername(String username) {
         Session session = this.sessionFactory.openSession();
         List<User> user = session
@@ -69,6 +78,8 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public User findById(int id) {
         Session session = this.sessionFactory.openSession();
-        return (User) session.get(User.class, id);
+        User user = (User) session.get(User.class, id);
+        session.close();
+        return user;
     }
 }

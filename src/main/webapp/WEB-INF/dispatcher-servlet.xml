@@ -14,8 +14,6 @@
     <context:component-scan base-package="controller" />
     <!--automatyczne sprawdzanie controlerów w package bez konieczności dopisywania w tym xmlu-->
 
-
-
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix">
             <value>/WEB-INF/views/</value>

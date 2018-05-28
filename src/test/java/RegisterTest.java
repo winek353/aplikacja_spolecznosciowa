@@ -52,7 +52,7 @@ public class RegisterTest {
                 .andExpect(model().hasErrors());
     }
     @Test
-    public void invalidEmail() throws Exception {
+    public void invalidEmail() throws Exception {//raz nie przeszło
         RegisterController registerController = new RegisterController();
         registerController.setUserDAO(userDAO);
         registerController.setUserRegisterValidator(userRegisterValidator);

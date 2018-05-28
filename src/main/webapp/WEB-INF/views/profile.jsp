@@ -14,5 +14,19 @@
 profile
 username: ${profile.username}
 email: ${profile.email}
+<form method="post" , action="changeProfile">
+    <table>
+        <%--<tr>--%>
+            <%--<input type="checkbox" name="sex" value="male"><br>--%>
+        <%--</tr>--%>
+        <tr>
+            <td><input type="text" , name="aboutMe", value=${profile.aboutMe}></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" , value="change"></td>
+        </tr>
+    </table>
+</form>
 </body>
 </html>

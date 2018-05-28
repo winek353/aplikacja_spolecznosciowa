@@ -13,6 +13,9 @@
 <body>
 you are logged in
     <p>
+        <a href = "http://localhost:8080/profile">display profile</a>
+    </p>
+    <p>
         <form method="post" , action="logout">
             <td><input type="submit" , value="logout"></td>
         </form>

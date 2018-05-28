@@ -37,6 +37,13 @@ public class User {
 	@Transient
 	private String confirmedPassword;
 
+	//optional informations
+	@Column(name="sex")
+	private char sex;
+
+	@Column(name="about_me")
+	private String aboutMe;
+
 
 
 
@@ -82,7 +89,23 @@ public class User {
 		this.confirmedPassword = confirmedPassword;
 	}
 
-	@Override
+    public char getSex() {
+        return sex;
+    }
+
+    public void setSex(char sex) {
+        this.sex = sex;
+    }
+
+    public String getAboutMe() {
+        return aboutMe;
+    }
+
+    public void setAboutMe(String aboutMe) {
+        this.aboutMe = aboutMe;
+    }
+
+    @Override
 	public String toString() {
 		return "User{" +
 				"id=" + id +

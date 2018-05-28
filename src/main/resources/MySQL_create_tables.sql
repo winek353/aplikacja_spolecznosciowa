@@ -9,8 +9,8 @@ CREATE TABLE `user_profile` (
   `password` VARCHAR(200) NOT NULL,
   -- `role` varchar(45) DEFAULT NULL,
   -- opcjonalne info
-  -- `sex` CHAR(1),
-  -- `about_me` TEXT DEFAULT NULL,
+  `sex` CHAR(1),
+  `about_me` TEXT DEFAULT NULL,
   
   -- NA POZNIEJ
   -- adres jako odniesienie do innej tabeli
