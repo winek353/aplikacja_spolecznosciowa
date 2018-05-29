@@ -1,27 +1,15 @@
 package model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name="user_profile")
 public class User {
-	public User() {
-	}
-
-	public User(String username, String email, String password) {
-		this.username = username;
-		this.email = email;
-		this.password = password;
-	}
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	@Column(name="user_profile_id")
 	private int id;
 
@@ -44,10 +32,25 @@ public class User {
 	@Column(name="about_me")
 	private String aboutMe;
 
+	@OneToMany(fetch = FetchType.EAGER, mappedBy="recipient")
+	private Set<FriendRequest> friendRequests;
 
+	public User() {
+	}
 
+	public User(String username, String email, String password) {
+		this.username = username;
+		this.email = email;
+		this.password = password;
+	}
 
+	public Set<FriendRequest> getFriendRequests() {
+		return friendRequests;
+	}
 
+	public void setFriendRequests(Set<FriendRequest> friendRequests) {
+		this.friendRequests = friendRequests;
+	}
 
 	public int getId() {
 		return id;
@@ -116,17 +119,6 @@ public class User {
 				'}';
 	}
 
-	//	//optional informations
-//	@Column(name="sex")
-//	private char sex;
-//
-//	@Column(name="about_me")
-//	private String aboutMe;
-//
-//	//friend request
-//	@OneToMany(fetch = FetchType.EAGER, mappedBy="recipient")
-//    private Set<FriendRequest> friendRequests;
-//
 //
 //	//friends
 //	@ManyToMany(fetch = FetchType.EAGER, cascade= {CascadeType.ALL})

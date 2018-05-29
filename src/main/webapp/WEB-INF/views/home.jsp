@@ -16,9 +16,13 @@ you are logged in
         <a href = "http://localhost:8080/profile">display profile</a>
     </p>
     <p>
+        <a href = "http://localhost:8080/friends">friends</a>
+    </p>
+    <p>
         <form method="post" , action="logout">
             <td><input type="submit" , value="logout"></td>
         </form>
     </p>
+
 </body>
 </html>

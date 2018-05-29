@@ -9,7 +9,7 @@ CREATE TABLE `user_profile` (
   `password` VARCHAR(200) NOT NULL,
   -- `role` varchar(45) DEFAULT NULL,
   -- opcjonalne info
-  `sex` CHAR(1),
+  `sex` CHAR(1) DEFAULT NULL,
   `about_me` TEXT DEFAULT NULL,
   
   -- NA POZNIEJ
@@ -19,21 +19,22 @@ CREATE TABLE `user_profile` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 
-CREATE TABLE `user_colleague` (
+CREATE TABLE `user_friend` (
 	`user_id` BIGINT(11) NOT NULL,
-	`colleague_id` BIGINT(11) NOT NULL,
-	PRIMARY KEY (`user_id`, `colleague_id`),
+	`friend_id` BIGINT(11) NOT NULL,
+	PRIMARY KEY (`user_id`, `friend_id`),
 	CONSTRAINT `FK_EMP` FOREIGN KEY (`user_id`) REFERENCES `user_profile` (`user_profile_id`),
-	CONSTRAINT `FK_COL` FOREIGN KEY (`colleague_id`) REFERENCES `user_profile` (`user_profile_id`)
+	CONSTRAINT `FK_COL` FOREIGN KEY (`friend_id`) REFERENCES `user_profile` (`user_profile_id`)
 );
 
-CREATE TABLE `colleague_request` (
-	`colleague_request_id` BIGINT(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `friend_request` (
+	`friend_request_id` BIGINT(11) NOT NULL AUTO_INCREMENT,
 	`user_id` BIGINT(11) NOT NULL,
     `requester_id`BIGINT(11) NOT NULL,
+    `requester_username` VARCHAR(45) BINARY NOT NULL,
     -- `friend_request_status` INT(1) NOT NULL,
     
-	PRIMARY KEY (`colleague_request_id`),
+	PRIMARY KEY (`friend_request_id`),
 	KEY `user_id` (`user_id`),
 	CONSTRAINT `FK_USER` FOREIGN KEY (`user_id`) REFERENCES `user_profile` (`user_profile_id`)
 );
@@ -86,9 +87,9 @@ CREATE TABLE `user_profile_event` (
 
 DROP TABLE user_profile_event;
 DROP TABLE event;
-DROP TABLE colleague_request;
+DROP TABLE friend_request;
 DROP TABLE user_profile_message;
 DROP TABLE message;
-DROP TABLE user_colleague;
+DROP TABLE user_friend;
 DROP TABLE user_profile;
 */

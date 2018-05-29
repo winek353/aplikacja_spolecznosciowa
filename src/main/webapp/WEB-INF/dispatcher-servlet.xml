@@ -38,6 +38,7 @@
         <property name="annotatedClasses">
             <list>
                 <value>model.User</value>
+                <value>model.FriendRequest</value>
             </list>
         </property>
         <property name="hibernateProperties">
@@ -50,10 +51,13 @@
     </bean>
 
 
-    <bean id="UserProfileDAO" class="dao.UserDAOImpl">
+    <bean id="userProfileDAO" class="dao.UserDAOImpl">
         <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
     </bean>
 
+    <bean id="friendRequestDAO" class="dao.FriendRequestDAOImpl">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </bean>
 
     <!--nowe rzeczy-->
     <bean id="encoder"
