@@ -41,7 +41,16 @@ public class User {
 	@JoinTable(name="user_friend",
 			joinColumns={@JoinColumn(name="user_id")},
 			inverseJoinColumns={@JoinColumn(name="friend_id")})
-	private Set<User> friends = new HashSet<User>();
+	private Set<User> friends = new HashSet<>();
+
+	//messages
+	@ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
+	@JoinTable(name = "user_profile_message",
+			joinColumns = { @JoinColumn(name = "user_profile_id") },
+			inverseJoinColumns = { @JoinColumn(name = "message_id") }
+	)
+
+	private Set<Message> messages = new HashSet<>();
 
 	public User() {
 	}
@@ -124,6 +133,14 @@ public class User {
 		this.friends = friends;
 	}
 
+	public Set<Message> getMessages() {
+		return messages;
+	}
+
+	public void setMessages(Set<Message> messages) {
+		this.messages = messages;
+	}
+
 	@Override
 	public String toString() {
 		return "User{" +
@@ -134,6 +151,8 @@ public class User {
 				", confirmedPassword='" + confirmedPassword + '\'' +
 				'}';
 	}
+
+
 
 //
 //	//friends

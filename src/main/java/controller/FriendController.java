@@ -66,8 +66,8 @@ public class FriendController {
         if(session.getAttribute("loggedInUserId") != null){
             model = new ModelAndView("home");
             FriendRequest friendRequest = friendRequestDAO.getFriendRequest(friendRequestId);
-            User user = userDAO.findById(friendRequest.getRequesterId());
-            User friend = userDAO.findById(friendRequest.getRecipient().getId());
+            User user = userDAO.findById(friendRequest.getRecipient().getId());
+            User friend = userDAO.findById(friendRequest.getRequesterId());
             userDAO.addFriend(user, friend);
             friendRequestDAO.delete(friendRequest);
             model.addObject("msg", "you are now friend with " + friend.getUsername());

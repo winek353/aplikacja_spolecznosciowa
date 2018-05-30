@@ -39,6 +39,7 @@
             <list>
                 <value>model.User</value>
                 <value>model.FriendRequest</value>
+                <value>model.Message</value>
             </list>
         </property>
         <property name="hibernateProperties">
@@ -56,6 +57,10 @@
     </bean>
 
     <bean id="friendRequestDAO" class="dao.FriendRequestDAOImpl">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </bean>
+
+    <bean id="messageDAO" class="dao.MessageDAOImpl">
         <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
     </bean>
 

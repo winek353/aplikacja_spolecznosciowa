@@ -15,107 +15,160 @@
     <schema id="9" parent="1" name="test"/>
     <schema id="10" parent="1" name="world"/>
     <table id="11" parent="2" name="friend_request"/>
-    <table id="12" parent="2" name="user_friend"/>
-    <table id="13" parent="2" name="user_profile"/>
-    <column id="14" parent="11" name="friend_request_id">
+    <table id="12" parent="2" name="message"/>
+    <table id="13" parent="2" name="user_friend"/>
+    <table id="14" parent="2" name="user_profile"/>
+    <table id="15" parent="2" name="user_profile_message"/>
+    <column id="16" parent="11" name="friend_request_id">
       <Position>1</Position>
       <DataType>bigint(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="15" parent="11" name="user_id">
+    <column id="17" parent="11" name="user_id">
       <Position>2</Position>
       <DataType>bigint(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="16" parent="11" name="requester_id">
+    <column id="18" parent="11" name="requester_id">
       <Position>3</Position>
       <DataType>bigint(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="17" parent="11" name="requester_username">
+    <column id="19" parent="11" name="requester_username">
       <Position>4</Position>
       <DataType>varchar(45)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="18" parent="11" name="user_id">
+    <index id="20" parent="11" name="user_id">
       <ColNames>user_id</ColNames>
     </index>
-    <key id="19" parent="11" name="PRIMARY">
+    <key id="21" parent="11" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>friend_request_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="20" parent="11" name="FK_USER">
+    <foreign-key id="22" parent="11" name="FK_USER">
       <ColNames>user_id</ColNames>
       <RefSchemaName>projekt-zespołowy_tracker</RefSchemaName>
       <RefTableName>user_profile</RefTableName>
       <RefColNames>user_profile_id</RefColNames>
     </foreign-key>
-    <column id="21" parent="12" name="user_id">
+    <column id="23" parent="12" name="message_id">
+      <Position>1</Position>
+      <DataType>bigint(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="24" parent="12" name="message">
+      <Position>2</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="25" parent="12" name="author">
+      <Position>3</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="26" parent="12" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>message_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="27" parent="13" name="user_id">
       <Position>1</Position>
       <DataType>bigint(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="22" parent="12" name="friend_id">
+    <column id="28" parent="13" name="friend_id">
       <Position>2</Position>
       <DataType>bigint(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="23" parent="12" name="FK_COL">
+    <index id="29" parent="13" name="FK_COL">
       <ColNames>friend_id</ColNames>
     </index>
-    <key id="24" parent="12" name="PRIMARY">
+    <key id="30" parent="13" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>user_id
 friend_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="25" parent="12" name="FK_EMP">
+    <foreign-key id="31" parent="13" name="FK_EMP">
       <ColNames>user_id</ColNames>
       <RefSchemaName>projekt-zespołowy_tracker</RefSchemaName>
       <RefTableName>user_profile</RefTableName>
       <RefColNames>user_profile_id</RefColNames>
     </foreign-key>
-    <foreign-key id="26" parent="12" name="FK_COL">
+    <foreign-key id="32" parent="13" name="FK_COL">
       <ColNames>friend_id</ColNames>
       <RefSchemaName>projekt-zespołowy_tracker</RefSchemaName>
       <RefTableName>user_profile</RefTableName>
       <RefColNames>user_profile_id</RefColNames>
     </foreign-key>
-    <column id="27" parent="13" name="user_profile_id">
+    <column id="33" parent="14" name="user_profile_id">
       <Position>1</Position>
       <DataType>bigint(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="28" parent="13" name="username">
+    <column id="34" parent="14" name="username">
       <Position>2</Position>
       <DataType>varchar(45)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="29" parent="13" name="email">
+    <column id="35" parent="14" name="email">
       <Position>3</Position>
       <DataType>varchar(45)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="30" parent="13" name="password">
+    <column id="36" parent="14" name="password">
       <Position>4</Position>
       <DataType>varchar(200)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="31" parent="13" name="sex">
+    <column id="37" parent="14" name="sex">
       <Position>5</Position>
       <DataType>char(1)|0</DataType>
     </column>
-    <column id="32" parent="13" name="about_me">
+    <column id="38" parent="14" name="about_me">
       <Position>6</Position>
       <DataType>text|0</DataType>
     </column>
-    <key id="33" parent="13" name="PRIMARY">
+    <key id="39" parent="14" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>user_profile_id</ColNames>
       <Primary>1</Primary>
     </key>
+    <column id="40" parent="15" name="user_profile_id">
+      <Position>1</Position>
+      <DataType>bigint(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="41" parent="15" name="message_id">
+      <Position>2</Position>
+      <DataType>bigint(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="42" parent="15" name="message_id">
+      <ColNames>message_id</ColNames>
+    </index>
+    <key id="43" parent="15" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>user_profile_id
+message_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="44" parent="15" name="user_profile_message_fk_1">
+      <ColNames>user_profile_id</ColNames>
+      <RefSchemaName>projekt-zespołowy_tracker</RefSchemaName>
+      <RefTableName>user_profile</RefTableName>
+      <RefColNames>user_profile_id</RefColNames>
+    </foreign-key>
+    <foreign-key id="45" parent="15" name="user_profile_message_fk_2">
+      <ColNames>message_id</ColNames>
+      <RefSchemaName>projekt-zespołowy_tracker</RefSchemaName>
+      <RefTableName>message</RefTableName>
+      <RefColNames>message_id</RefColNames>
+    </foreign-key>
   </database-model>
 </dataSource>

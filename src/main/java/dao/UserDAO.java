@@ -9,4 +9,5 @@ public interface UserDAO {
     User findByEmail(String email);
     User findById(int id);
     void addFriend(User user, User friend);
+    boolean isUsernameInDatabase(String username);
 }

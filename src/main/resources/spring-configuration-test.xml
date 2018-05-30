@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--only for tests!!!-->
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
@@ -40,6 +39,7 @@
             <list>
                 <value>model.User</value>
                 <value>model.FriendRequest</value>
+                <value>model.Message</value>
             </list>
         </property>
         <property name="hibernateProperties">
@@ -57,6 +57,10 @@
     </bean>
 
     <bean id="friendRequestDAO" class="dao.FriendRequestDAOImpl">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </bean>
+
+    <bean id="messageDAO" class="dao.MessageDAOImpl">
         <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
     </bean>
 

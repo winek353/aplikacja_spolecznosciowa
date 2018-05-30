@@ -94,4 +94,17 @@ public class UserDAOImpl implements UserDAO {
         tx.commit();
         session.close();
     }
+
+    @Override
+    public boolean isUsernameInDatabase(String username) {
+        Session session = this.sessionFactory.openSession();
+        List<User> user = session
+                .createQuery("from User up where up.username='" + username + "'")
+                .list();
+        session.close();
+        if(user.isEmpty())
+            return false;
+        else
+            return true;
+    }
 }
