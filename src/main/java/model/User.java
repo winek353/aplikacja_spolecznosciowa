@@ -2,6 +2,7 @@ package model;
 
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -34,6 +35,13 @@ public class User {
 
 	@OneToMany(fetch = FetchType.EAGER, mappedBy="recipient")
 	private Set<FriendRequest> friendRequests;
+
+	//friends
+	@ManyToMany(fetch = FetchType.EAGER, cascade= {CascadeType.ALL})
+	@JoinTable(name="user_friend",
+			joinColumns={@JoinColumn(name="user_id")},
+			inverseJoinColumns={@JoinColumn(name="friend_id")})
+	private Set<User> friends = new HashSet<User>();
 
 	public User() {
 	}
@@ -108,7 +116,15 @@ public class User {
         this.aboutMe = aboutMe;
     }
 
-    @Override
+	public Set<User> getFriends() {
+		return friends;
+	}
+
+	public void setFriends(Set<User> friends) {
+		this.friends = friends;
+	}
+
+	@Override
 	public String toString() {
 		return "User{" +
 				"id=" + id +

@@ -8,4 +8,5 @@ public interface UserDAO {
     User findByUsername(String username);
     User findByEmail(String email);
     User findById(int id);
+    void addFriend(User user, User friend);
 }

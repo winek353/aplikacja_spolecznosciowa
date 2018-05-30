@@ -11,7 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-you are logged in
+${msg}
     <p>
         <a href = "http://localhost:8080/profile">display profile</a>
     </p>

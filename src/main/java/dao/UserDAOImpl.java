@@ -82,4 +82,16 @@ public class UserDAOImpl implements UserDAO {
         session.close();
         return user;
     }
+
+    @Override
+    public void addFriend(User user, User friend) {
+        Session session = this.sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
+        user.getFriends().add(friend);
+        friend.getFriends().add(user);
+        session.update(user);
+        session.update(friend);
+        tx.commit();
+        session.close();
+    }
 }

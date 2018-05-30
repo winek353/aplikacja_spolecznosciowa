@@ -15,15 +15,17 @@
 <p>friend requests:
 <table  width='350'>
     <c:forEach items="${user.friendRequests}" var="friendRequest">
-        <form method="post" action="AddFriend">
+        <form method="get" action="addFriend">
             <tr>
                 <td>from ${friendRequest.requesterUsername}</td>
-                <input type="hidden" name="request_id" value="${friendRequest.id}">
+                <input type="hidden" name="friendRequestId" value="${friendRequest.id}">
                 <td><input type="submit" , value="accept"></td>
             </tr>
         </form>
     </c:forEach>
 </table>
+
+<p>Send friend request:
 <form method="get" , action="sendFriendRequest">
     <table>
         <tr>
@@ -36,5 +38,15 @@
         </tr>
     </table>
 </form>
+
+Friends:
+    <table>
+        <c:forEach items="${user.friends}" var="friend">
+        <tr>
+            <td>${friend.username}</td>
+        </tr>
+        </c:forEach>
+    </table>
+
 </body>
 </html>

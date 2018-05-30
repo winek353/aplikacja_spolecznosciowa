@@ -17,9 +17,26 @@ public class FriendRequestDAOImpl implements FriendRequestDAO{
 
     @Override
     public void save(FriendRequest friendRequest) {
-        Session session = this.sessionFactory.openSession();
+        Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
         session.persist(friendRequest);
+        tx.commit();
+        session.close();
+    }
+
+    @Override
+    public FriendRequest getFriendRequest(int friendRequestId) {
+        Session session = sessionFactory.openSession();
+        FriendRequest friendRequest = (FriendRequest) session.get(FriendRequest.class, friendRequestId);
+        session.close();
+        return friendRequest;
+    }
+
+    @Override
+    public void delete(FriendRequest friendRequest) {
+        Session session = sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
+        session.delete(friendRequest);
         tx.commit();
         session.close();
     }
