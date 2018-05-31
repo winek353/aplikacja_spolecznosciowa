@@ -34,12 +34,12 @@ public class UserRegisterValidator implements Validator {
         if(user.getEmail().isEmpty()){
             errors.rejectValue("email", "NotEmpty", "email cannot be empty");
         }
-//        if(user.getUsername().trim().isEmpty()){
-//            errors.rejectValue("username", "NotWhitespace", "username cannot white space");
-//        }
-//        if(user.getEmail().trim().isEmpty()){
-//            errors.rejectValue("username", "NotWhitespace", "email cannot contain white space");
-//        }
+        if(user.getUsername().trim().isEmpty()){
+            errors.rejectValue("username", "NotWhitespace", "username contain cannot white space");
+        }
+        if(user.getEmail().trim().isEmpty()){
+            errors.rejectValue("username", "NotWhitespace", "email cannot contain white space");
+        }
         if (userDAO.findByUsername(user.getUsername()) != null) {
             errors.rejectValue("username",
                     "Duplicate.userForm.username", "username already taken" );

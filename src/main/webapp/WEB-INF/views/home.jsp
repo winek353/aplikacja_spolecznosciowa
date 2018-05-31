@@ -22,6 +22,9 @@ ${msg}
         <a href = "http://localhost:8080/messages">messages</a>
     </p>
     <p>
+        <a href = "http://localhost:8080/events">events</a>
+    </p>
+    <p>
         <form method="post" , action="logout">
             <td><input type="submit" , value="logout"></td>
         </form>

@@ -52,6 +52,7 @@ public class RegisterController {
     @RequestMapping(value="/submitRegisterForm", method = RequestMethod.POST)
     public ModelAndView submitAdmissionForm(@ModelAttribute("user")
                                                 @Valid User user, BindingResult bindingResult) {
+//        System.out.println(userDAO);
 
         if (bindingResult.hasErrors()) {
             System.out.println(bindingResult.getAllErrors());

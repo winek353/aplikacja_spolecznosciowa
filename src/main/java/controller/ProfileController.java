@@ -24,7 +24,7 @@ public class ProfileController {
     public ModelAndView getProfile(HttpSession session) {
         ModelAndView model;
         if(session.getAttribute("loggedInUserId") != null){
-            model = new ModelAndView("profile");
+            model = new ModelAndView("profileInfo");
             model.addObject("profile",userDAO.findById((int) session.getAttribute("loggedInUserId")));
         }
         else{
@@ -41,7 +41,7 @@ public class ProfileController {
         User user = userDAO.findById((int) session.getAttribute("loggedInUserId"));
         System.out.println(aboutMe);
         if(session.getAttribute("loggedInUserId") != null){
-            model = new ModelAndView("profile");
+            model = new ModelAndView("profileInfo");
             if(aboutMe != null){
                 user.setAboutMe(aboutMe);
             }
@@ -55,5 +55,9 @@ public class ProfileController {
             model.addObject("msg", "you are not logged in");
         }
         return model;
+    }
+
+    public void setUserDAO(UserDAO userDAO) {
+        this.userDAO = userDAO;
     }
 }

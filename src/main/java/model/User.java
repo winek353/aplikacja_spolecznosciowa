@@ -49,8 +49,15 @@ public class User {
 			joinColumns = { @JoinColumn(name = "user_profile_id") },
 			inverseJoinColumns = { @JoinColumn(name = "message_id") }
 	)
-
 	private Set<Message> messages = new HashSet<>();
+
+	//events
+	@ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
+	@JoinTable(name = "user_profile_event",
+			joinColumns = { @JoinColumn(name = "user_profile_id") },
+			inverseJoinColumns = { @JoinColumn(name = "event_id") }
+	)
+	private Set<Event> events = new HashSet<>();
 
 	public User() {
 	}
@@ -139,6 +146,14 @@ public class User {
 
 	public void setMessages(Set<Message> messages) {
 		this.messages = messages;
+	}
+
+	public Set<Event> getEvents() {
+		return events;
+	}
+
+	public void setEvents(Set<Event> events) {
+		this.events = events;
 	}
 
 	@Override

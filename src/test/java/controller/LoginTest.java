@@ -1,4 +1,4 @@
-
+package controller;
 
 import controller.LoginController;
 import dao.UserDAO;
