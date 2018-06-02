@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
 
@@ -13,6 +14,7 @@
 <title>Register</title>
 </head>
 <body BACKGROUND="<c:url value='../views/background.jpg'/>">
+<form:errors path="user.*"/>
 
 <div class="main">
     <h1 class="pl-5 pt-5 display-1">Sign up</h1>

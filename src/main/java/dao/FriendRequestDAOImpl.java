@@ -33,6 +33,17 @@ public class FriendRequestDAOImpl implements FriendRequestDAO{
     }
 
     @Override
+    public FriendRequest getFriendRequest(int userId, int friendId) {
+        Session session = this.sessionFactory.openSession();
+        User user = (User) session.get(User.class, userId);
+        for(FriendRequest friendRequest :user.getFriendRequests()) {
+            if(friendRequest.getRequesterId() == friendId)
+                return friendRequest;
+        }
+        return null;
+    }
+
+    @Override
     public void delete(FriendRequest friendRequest) {
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();

@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <meta charset="utf-8">
@@ -12,6 +13,9 @@
     <title>Title</title>
 </head>
 <body>
+<c:forEach items="${errors}" var="error">
+    ${error.defaultMessage}
+</c:forEach>
 ${msg}
     <p>
         <a href = "http://localhost:8080/profile">display profile</a>

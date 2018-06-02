@@ -10,4 +10,6 @@ public interface UserDAO {
     User findById(int id);
     void addFriend(User user, User friend);
     boolean isUsernameInDatabase(String username);
+    boolean areFriends(int id1, int id2);
+    boolean isFriendRequestSent(int userId, int friendId);
 }

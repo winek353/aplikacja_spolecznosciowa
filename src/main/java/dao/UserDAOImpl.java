@@ -1,5 +1,6 @@
 package dao;
 
+import model.FriendRequest;
 import model.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -107,4 +108,30 @@ public class UserDAOImpl implements UserDAO {
         else
             return true;
     }
+
+    @Override
+    public boolean areFriends(int id1, int id2) {
+        Session session = this.sessionFactory.openSession();
+        User user1 = (User) session.get(User.class, id1);
+        User user2 = (User) session.get(User.class, id2);
+        session.close();
+        if(user1.getFriends().contains(user2))
+            return true;
+        else
+            return false;
+    }
+
+    @Override
+    public boolean isFriendRequestSent(int userId, int friendId) {
+        Session session = this.sessionFactory.openSession();
+        User user = (User) session.get(User.class, userId);
+        for(FriendRequest friendRequest :user.getFriendRequests()) {
+            if(friendRequest.getRequesterId() == friendId)
+                return true;
+        }
+        return false;
+    }
+
+
+
 }

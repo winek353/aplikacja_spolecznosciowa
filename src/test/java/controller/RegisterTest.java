@@ -58,7 +58,7 @@ public class RegisterTest {
 //                .param("confirmedPassword", "12345678"))
 //                .andExpect(model().hasErrors());
 //    }
-    
+
 //    @Test
 //    public void invalidEmail() throws Exception {
 //        RegisterController registerController = new RegisterController();

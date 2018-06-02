@@ -38,12 +38,14 @@ public class FriendRequest {
     public FriendRequest() {
     }
 
+    public FriendRequest(String requesterUsername) {
+        this.requesterUsername = requesterUsername;
+    }
 
-    public FriendRequest(int requester, User recipient) {
-        super();
-        this.requesterId = requester;
+    public FriendRequest(int requesterId, User recipient, String requesterUsername) {
+        this.requesterId = requesterId;
         this.recipient = recipient;
-        //friendRequestStatus = FriendRequestStatus.NEW;
+        this.requesterUsername = requesterUsername;
     }
 
     public String getRequesterUsername() {
